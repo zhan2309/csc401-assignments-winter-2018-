@@ -1,0 +1,55 @@
+2.4 Experiments and discussion
+Experiments:
+==============================================================
+(1)change M:
+M		maxIter		        number_of_speakers  k       Accuracy
+2       1                   32                  5        0.625
+3       5                   32                  5        0.75
+5       10                  32                  5        0.9375
+Conclusion:
+It can be seen that as the M decreases, the Accuracy decreases a lot.
+This is because as M decreases, the gaussian components will be
+relative low and this causes the mixture model classify speach data in
+very simple way. Then the Accuracy stays in very low level.
+--------------------------------------------------------------
+(2)change maxIter times:
+M		maxIter		        number_of_speakers  k       Accuracy
+2       1                   32                  5        0.65625
+2       5                   32                  5        0.96875
+2       10                  32                  5        1.0
+Conclusion: 
+It can be seen that as the maxIter decreases, the Accuracy decreases a lot.
+This is because the model is not well trained by only few iteration. Therefore, if we
+add more iteration to the model, the Accuracy will significant increase.
+---------------------------------------------------------------
+(3)change speakers numbers:
+M		maxIter		        number_of_speakers  k       Accuracy
+2       1                   9                   5        0.8888888888888888
+2       1                   16                  5        0.8823529411764706
+2       1                   30                  5        0.7096774193548387
+Conclusion:
+It can be seen that as the number_of_speakers decreases, the Accuracy increase.
+This is because as the number_of_speakers decreases, the choices for the model are
+decreased and this mean that the classifier will have less chance to make mistakes
+and this will increase the Accuracy for classfication. Therefore, the Accuracy of
+the model will increase, when the number_of_speakers decreases.
+
+Discussion:
+==============================================================
+1.How might you improve the classification accuracy of the Gaussian mixtures, without adding more
+training data?
+By the Experiments, it is clear that one way to increase accuracy is to increase the maxIter so the model
+is well trained and the accuracy will increase. Another way is to set larger M and then the mixture model
+will classify trained data in a complex way. Then the accuracy will increase as well.
+
+2.When would your classifier decide that a given test utterance comes from none of the trained speaker
+models, and how would your classifier come to this decision?
+when the likelihood of the test data given all models are 0, then classifier decide that a given test utterance comes from none of the trained speaker
+models.Because the trained data are too similar and this cause bm will be zero. By the formula of log likelihood, it can be seen it will go to infinity.
+When the values of the log likelihood goes to infinity, then classifier will come to this decision.
+
+
+3.Can you think of some alternative methods for doing speaker identification that don’t use Gaussian
+mixtures?
+K-mean clusters and Neural network.
+
